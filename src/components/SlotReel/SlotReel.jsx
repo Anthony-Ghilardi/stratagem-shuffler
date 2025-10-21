@@ -3,17 +3,12 @@ import "./slot-reel.css";
 import { stratagems } from "../../data/stratagems";
 
 export default function SlotReel() {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [display, setDisplay] = useState([0, 0, 0, 0]);
-  const [reelOne, setReelOne] = useState();
-  const [reelTwo, setReelTwo] = useState();
-  const [reelThree, setReelThree] = useState();
-  const [reelFour, setReelFour] = useState();
+  const [display, setDisplay] = useState([0, 1, 2, 3]);
   const [isDisabled, setIsDisabled] = useState(false);
 
   function beginShuffle() {
     setIsDisabled(true);
-    loadoutController();
+    // loadoutController();
     const intervalID = setInterval(indexSelection, 120);
     setTimeout(() => {
       clearInterval(intervalID);
@@ -21,10 +16,15 @@ export default function SlotReel() {
     }, 2000);
   }
 
+
   function indexSelection() {
-    let indexValue = Math.floor(Math.random() * stratagems.length);
-    setCurrentIndex(indexValue);
-    console.log(currentIndex);
+    let randomArray = [];
+    for(let i = 0; i < 4; i++) {
+      let indexValue = Math.floor(Math.random() * stratagems.length);
+      randomArray.push(indexValue);
+    }
+    setDisplay(randomArray)
+    console.log("Index selection display", randomArray);
   }
 
   function loadoutController() {
@@ -68,26 +68,26 @@ export default function SlotReel() {
       <div className="stratagem-icons-container">
         <img
           className="stratagem-icons"
-          src={stratagems[currentIndex].icon}
+          src={stratagems[display[0]].icon}
         ></img>
         <img
           className="stratagem-icons"
-          src={stratagems[currentIndex].icon}
+          src={stratagems[display[1]].icon}
         ></img>
         <img
           className="stratagem-icons"
-          src={stratagems[currentIndex].icon}
+          src={stratagems[display[2]].icon}
         ></img>
         <img
           className="stratagem-icons"
-          src={stratagems[currentIndex].icon}
+          src={stratagems[display[3]].icon}
         ></img>
       </div>
       <div className="stratagem-name-container">
-        <p className="stratagem-name">{stratagems[currentIndex].name}</p>
-        <p className="stratagem-name">{stratagems[currentIndex].name}</p>
-        <p className="stratagem-name">{stratagems[currentIndex].name}</p>
-        <p className="stratagem-name">{stratagems[currentIndex].name}</p>
+        <p className="stratagem-name">{stratagems[display[0]].name}</p>
+        <p className="stratagem-name">{stratagems[display[1]].name}</p>
+        <p className="stratagem-name">{stratagems[display[2]].name}</p>
+        <p className="stratagem-name">{stratagems[display[3]].name}</p>
       </div>
       <button
         className="shuffle-btn"
