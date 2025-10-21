@@ -1,0 +1,34 @@
+.stratagem-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stratagem-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 150px;
+    height: 150px;
+}
+
+.stratagem-name-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.stratagem-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.shuffle-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
